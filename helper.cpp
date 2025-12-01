@@ -48,9 +48,9 @@ void write_file( vector<int>& path, string filename) {
         return;
     }
 
-    file << "Path: ";
+   
     for (int p : path) {
-        file << p << " ";
+        file << p << ",";
     }
     file << endl;
     

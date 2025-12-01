@@ -71,12 +71,13 @@ float run_2opt_improvement(const vector<vector<float > >& dist, vector<int>& pat
                     reverse(path.begin() + i + 1, path.begin() + k + 1);
                     current_cost -= (d_curr - d_new);
                     improvement = true;
+                    cycles++;
                 }
             }
         }
     }
     
-    cycles++; // Count this optimization pass
+     // Count this optimization pass
     return current_cost;
 }
 
