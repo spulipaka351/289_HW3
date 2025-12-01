@@ -7,7 +7,7 @@
 #include <cmath>
 using namespace std;
 
-float TSP(const vector<vector<float>>& dist) {
+float TSP(const vector<vector<float > >& dist) {
     int N = dist.size();
     
     vector<bool> visited(N, false);
@@ -53,11 +53,9 @@ float TSP(const vector<vector<float>>& dist) {
 
     return total_cost;
 }
-#include <vector>
-#include <limits>
-using namespace std;
 
-float tsp_nn(const vector<vector<float>>& dist,
+
+float tsp_nn(const vector<vector<float > >& dist,
              vector<int>& path,
              int start,
              long long &cycles)

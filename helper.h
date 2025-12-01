@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include<vector>
+#include<string>
 using namespace std;
 
 struct node {
@@ -11,8 +12,8 @@ struct node {
     float dist;
 };
 
-void display_graph( vector<vector<float>>& dist);
-void gen_graph( vector<vector<float>>& dist);
+void display_graph( vector<vector<float > >& dist);
+void gen_graph( vector<vector<float > >& dist,string filename);
 void write_file(vector<int>& path);
 
 #endif

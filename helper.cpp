@@ -1,7 +1,8 @@
 #include "helper.h"
 #include <fstream>
 #include <sstream>
- void display_graph( vector<vector<float>>& dist) {
+#include <string>
+ void display_graph( vector<vector<float > >& dist) {
     for (int i = 0; i < 1; i++) {
         for (int j = 0; j < dist[i].size(); j++) {
             cout << dist[i][j] << " ";
@@ -11,9 +12,9 @@
 }
 
 
-void gen_graph(vector<vector<float>>& dist) {
+void gen_graph(vector<vector<float > >& dist, string filename) {
     string line;
-    ifstream file("rand.txt");
+    ifstream file(filename);
     if (!file.is_open()) {
         cout << "file not uploaded" << endl;
         return;
