@@ -39,8 +39,9 @@ void gen_graph(vector<vector<float > >& dist, string filename) {
 }
 
 
-void write_file( vector<int>& path) {
-    fstream file("path.txt", ios::out); // No "./" needed usually
+void write_file( vector<int>& path, string filename) {
+    string output_file = "path_"+ filename;
+    fstream file(output_file, ios::out); // No "./" needed usually
 
     if (!file.is_open()) {
         cerr << "Error opening file!" << endl;

@@ -15,7 +15,7 @@ int main(int argc, char* argv[]) {
 
     // 2. Read File
     string filename = argv[1];
-    int ch = stoi(argv[2]);
+    // int ch = stoi(argv[2]);
     int N = 1000;
     vector<vector<float > > graph(N, vector<float>(N, 1e9f));
     gen_graph(graph,filename);
@@ -25,21 +25,21 @@ int main(int argc, char* argv[]) {
     vector<int> best_path, temp_path;
     chrono::duration<double> runtime;
     auto start = chrono::high_resolution_clock::now();
-    if(ch==0){
-        cout<<"naive"<<endl;
-        for (int s = 0; s < N; s++) {
-            float cost = tsp_nn(graph, temp_path, s, cycles);
-            if (cost < best_cost) {
-                best_cost = cost;
-                best_path = temp_path;
-            }
-        }
-        auto endtime =chrono::high_resolution_clock::now();
-        runtime = endtime - start;
+        //NAIVE
+        // cout<<"naive"<<endl;
+        // for (int s = 0; s < N; s++) {
+        //     float cost = tsp_nn(graph, temp_path, s, cycles);
+        //     if (cost < best_cost) {
+        //         best_cost = cost;
+        //         best_path = temp_path;
+        //     }
+        // }
+        // auto endtime =chrono::high_resolution_clock::now();
+        // runtime = endtime - start;
 
-    }
+
     
-    else{
+
         cout << "Phase 1: Finding best NN start node..." << endl;
         for (int s = 0; s < N; s++) {
             // Only run the NN construction (Fast)
@@ -57,7 +57,7 @@ int main(int argc, char* argv[]) {
     
         auto end = chrono::high_resolution_clock::now();
          runtime = end - start;
-    }
+   
     
 
     cout << "PHASE-2 RESULTS" << endl;
@@ -69,6 +69,6 @@ int main(int argc, char* argv[]) {
     for (int i = 0; i < 15; i++)
         cout << best_path[i] << " ";
     cout << "..." << endl;
-    write_file(best_path);
+    write_file(best_path,filename);
     return 0;
 }
