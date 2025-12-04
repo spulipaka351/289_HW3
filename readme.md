@@ -9,10 +9,10 @@ This project implements the **2-Opt local search algorithm** to find near-optima
 To compile the C++ source files and create the executable, open your terminal or command prompt in the project directory and run the following command:
 
 ```bash
-g++ .\main.cpp .\helper.cpp .\tsp.cpp .\2-opt.cpp -o main
+g++ .\main.cpp .\helper.cpp .\tsp.cpp .\2-opt.cpp -o main.exe
 ```
 ## Run the code
-### for windows
+
 
 If you are running the executable on Windows, ensure that your input graph data file (e.g., rand.txt) and the compiled main.exe are located in the same folder.
 

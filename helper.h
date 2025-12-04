@@ -15,5 +15,5 @@ struct node {
 void display_graph( vector<vector<float > >& dist);
 void gen_graph( vector<vector<float > >& dist,string filename);
 void write_file(vector<int>& path, string filename);
-
+string int_to_scientific(int number);
 #endif

@@ -62,9 +62,9 @@ int main(int argc, char* argv[]) {
 
     cout << "PHASE-2 RESULTS" << endl;
     cout << "Best NN cost: " << best_cost << endl;
-    cout << "Cycles evaluated: " << cycles << endl;
+    cout << "Cycles evaluated: " << int_to_scientific(cycles )<< endl;
     cout << "Runtime: " << runtime.count() << " seconds" << endl;
-
+    
     cout << "First 15 nodes: ";
     for (int i = 0; i < 15; i++)
         cout << best_path[i] << " ";
