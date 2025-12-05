@@ -48,8 +48,7 @@ float run_nn(const vector<vector<float > >& dist, vector<int>& path, int start) 
     return current_cost;
 }
 
-// --- Phase 2: Improvement (2-Opt) ---
-// Takes an existing path and optimizes it
+
 float run_2opt_improvement(const vector<vector<float > >& dist, vector<int>& path, float current_cost, long long &cycles) {
     int N = dist.size();
     bool improvement = true;
@@ -82,8 +81,7 @@ float run_2opt_improvement(const vector<vector<float > >& dist, vector<int>& pat
     return current_cost;
 }
 
-// --- Wrapper for Backward Compatibility ---
-// Does BOTH construction and improvement (Slow if called in a loop)
+
 float two_opt(const vector<vector<float > >& dist,
               vector<int>& path,
               int start,
@@ -147,55 +145,11 @@ void write_file( vector<int>& path, string filename) {
     file.close();
 }
 
-string int_to_scientific(int number) {
-    // 1. Create a stringstream object
-    stringstream ss;
 
-    // 2. Apply manipulators:
-    //    - scientific: forces the output to be in scientific notation (e.g., 1.000000e+02)
-    //    - setprecision(0): sets the number of digits *after* the decimal point to 0.
-    //      This is a key step to get '1e+02' instead of '1.000000e+02'.
-    ss << scientific << setprecision(0) << number;
-
-    // 3. Get the resulting string
-    string result = ss.str();
-
-    // 4. Post-process the string to match the exact "1e2" format:
-    //    a) Remove the '+' sign if present (e.g., "1e+02" -> "1e02")
-    size_t plus_pos = result.find('+');
-    if (plus_pos != string::npos) {
-        result.erase(plus_pos, 1);
-    }
-    
-    //    b) Remove the leading '0' from the exponent if present (e.g., "1e02" -> "1e2")
-    //       This works for exponents < 100.
-    size_t e_pos = result.find('e');
-    if (e_pos != string::npos && result.length() > e_pos + 2 && result[e_pos + 1] == '0') {
-        result.erase(e_pos + 1, 1);
-    }
-
-    //    c) Remove the decimal point and trailing zeros (e.g., "1.e2" -> "1e2")
-    size_t dot_pos = result.find('.');
-    if (dot_pos != string::npos) {
-        // Find where the 'e' starts
-        size_t e_start = result.find('e');
-        
-        // Erase everything from the dot up to, but not including, 'e'
-        if (e_start != string::npos && e_start > dot_pos) {
-            result.erase(dot_pos, e_start - dot_pos);
-        }
-    }
-
-    return result;
-}
 
 
 int main(int argc, char* argv[]) {
-    // 1. Check Arguments
     
-    // 2. Read File
-    
-    // int ch = stoi(argv[2]);
     int N = 1000;
     vector<vector<float > > graph(N, vector<float>(N, 1e9f));
     gen_graph(graph,"TSP_1000_euclidianDistance.txt");
@@ -242,7 +196,7 @@ int main(int argc, char* argv[]) {
 
     cout << "PHASE-2 RESULTS" << endl;
     cout << "Best NN cost: " << best_cost << endl;
-    cout << "Cycles evaluated: " << int_to_scientific(cycles )<< endl;
+    cout << "Cycles evaluated: " << cycles << endl;
     cout << "Runtime: " << runtime.count() << " seconds" << endl;
     
     cout << "First 15 nodes: ";
